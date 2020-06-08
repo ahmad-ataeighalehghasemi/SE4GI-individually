@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{%endblock%}
+
+{% block header %}
+  Clean The World;
+{% endblock %}
+
+{% block content %}
+is a WebApp designed to make our cities cleaner!<br>You can easily &ldquo; Sign up &rdquo; and &ldquo; Add &rdquo;new litter cases.
+Organizations,<br>NGOs and individuals can use these data to remove them.<br>Then you can enjoy living in a tidy World. So...
+{% endblock %}
+
+{% block extra %}
+  <div class="inline">
+  {% if g.user is none %}
+    <a href="/signup" class="btn btn-danger">
+      Sign up
+    </a>
+  {% endif %}
+
+    <a href="/graph" class="btn btn-success">
+      Graph
+    </a>
+  </div>
+
+  <div class="row my_cards">
+    {% for item in posts %}
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{item[5]}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{item[2]}}</h6>
+        <p class="card-text">Latitude:{{item[3]}}<br>Longitude:{{item[4]}}</p>
+        {% if  g.user is not none%}
+          {% if g.user[1]==item[0] %}
+            <a href="/update/{{item[1]}}" class="card-link bg-success text-white">Update</a>
+            <form class="card-link" action="/delete/{{item[1]}}" onsubmit="return confirm('Are you sure?');">
+            <button class="bg-danger text-white" type="submit">
+            remove
+            </button>
+            </form>
+
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+{% endblock %}

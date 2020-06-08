@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="row h-100 justify-content-center align-items-center">
+<div class="wrapper fadeInDown center">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+
+      <h1>Sign in</h1>
+    </div>
+
+    <!-- Login Form -->
+    <form method="POST">
+    {% if error is not none %}
+    <p class="p-3 mb-2 bg-danger text-white error">
+      {{error}}
+    </p>
+    {%endif%}
+      <input type="text" id="login" class="fadeIn second" name="username" placeholder="username" required>
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" required>
+      <input type="submit" class="fadeIn fourth" value="Sign In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover sign" href="/signup">Sign up</a>
+    </div>
+
+  </div>
+</div>
+</div>
+
+{% endblock %}

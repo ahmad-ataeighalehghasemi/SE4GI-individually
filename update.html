@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row h-100 justify-content-center align-items-center">
+<div class="wrapper fadeInDown center">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+
+      <h1>Update</h1>
+    </div>
+
+    <!-- Login Form -->
+    <form method="POST">
+    {% if error is not none %}
+    <p class="p-3 mb-2 bg-danger text-white error">
+      {{error}}
+    </p>
+    {%endif%}
+      <input type="text" id="latitude" class="fadeIn second" name="latitude" placeholder="Coordinates(Latitude)" value="{{ data[3] }}" required>
+      <input type="text" id="longitude" class="fadeIn third" name="longitude" placeholder="Coordinates(Longitude)" value="{{ data[4] }}" required>
+      <input type="text" id="litter" class="fadeIn third" name="litter" placeholder="Kind of Litter" value="{{ data[5] }}" required>
+      <input type="submit" class="fadeIn fourth" value="Update">
+    </form>
+
+
+
+  </div>
+</div>
+</div>
+  <!-- <form method="post">
+    <label for="latitude">Coordinates(Latitude)</label>
+    <input name="latitude" id="latitude" value="{{ request.form['latitude'] }}" required>
+    <label for="longitude">Coordinates(Longitude)</label>
+    <input name="longitude" id="longitude" value="{{ request.form['longitude'] }}" required>
+    <label for="litter">Kind of Litter</label>
+    <input name="litter" id="litter" value="{{ request.form['litter'] }}" required>
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  <form action="{{ url_for('delete', id=data[0]) }}" method="post">
+    <input class="danger" type="submit" value="Remove" onclick="return confirm('Do You Want to Remove This Case?');">
+  </form>-->
+{% endblock %}
